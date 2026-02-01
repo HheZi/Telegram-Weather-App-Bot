@@ -36,14 +36,11 @@ WEATHER_TOKEN=<your-weather-api-token>
 
 **Run the bot (Linux / macOS)**
 ```bash
-source ./venv/bin/activate
 ./start_bot.sh
 ```
 
 **Run the bot (Windows, from project root)**
 ```powershell
-venv\\Scripts\\activate
-.
 start_bot.bat
 ```
 
