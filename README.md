@@ -9,14 +9,28 @@ Simple Telegram bot that lets users set a default city and get current weather o
 
 **Prerequisites**
 - Python 3.8+ installed
-- Create a virtual environment (recommended)
+- Create a virtual environment (required)
 - Required packages (install into the venv): `pyTelegramBotAPI`, `python-dotenv`, `requests`
 
 Example install:
 ```bash
 python -m venv venv
 source venv/bin/activate
-pip install pyTelegramBotAPI python-dotenv requests
+pip install -r requirements.txt
+```
+
+**Setup**
+- Create and activate a virtual environment:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+- Install dependencies from `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
 ```
 
 **Configuration**
