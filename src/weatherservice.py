@@ -2,26 +2,28 @@ import config
 from requests import get
 from collections import defaultdict, Counter
 
-def get_current_weather_for_city(city_name):
+def get_current_weather_for_city(city_name: str) -> str:
     data = get(
         url="https://api.openweathermap.org/data/2.5/weather", 
         params={"appid": config.weather_token, "q" : city_name, "units": "metric"}
     ).json()
-
+    
+    # 200 must be integer type
     if data["cod"] == 200:
         return parse_current_weather_report(data)
+    # 404 must be str type
     elif data["cod"] == "404":
         return "City is not found"
     else:
         return "Something went wrong while getting weather report"
 
-def get_five_day_weather_report_for_city(city_name):
+def get_five_day_weather_report_for_city(city_name) -> str:
     data = get(
         url="https://api.openweathermap.org/data/2.5/forecast",
         params={"appid": config.weather_token, "q" : city_name, "units": "metric"}
     ).json()
 
-    if data["cod"] == 200:
+    if data["cod"] == "200":
         return format_five_day_report(parse_five_day_weather_report(data), city_name)
     elif data["cod"] == "404":
         return "City is not found"
@@ -52,7 +54,7 @@ def parse_current_weather_report(data):
 
     return message
 
-def parse_five_day_weather_report(data):
+def parse_five_day_weather_report(data) -> dict:
     daily = defaultdict(lambda: {
         "temps": [],
         "feels": [],
@@ -82,7 +84,7 @@ def parse_five_day_weather_report(data):
 
     return summary
 
-def format_five_day_report(summary, city_name):
+def format_five_day_report(summary: dict, city_name: str) -> str:
     message = f"📍 5-Day Forecast for *{city_name}*\n\n"
     for date, values in summary.items():
         message += (
