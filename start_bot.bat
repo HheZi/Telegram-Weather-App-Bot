@@ -3,7 +3,7 @@ REM
 call venv\Scripts\activate
 
 REM
-python bot.py
+python ./src/bot.py
 
 REM 
 call venv\Scripts\deactivate

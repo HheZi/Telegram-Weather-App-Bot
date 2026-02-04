@@ -4,7 +4,7 @@ source ./venv/bin/activate
 
 echo "Starting the Telegram Bot..."
 
-python bot.py
+python ./src/bot.py
 
 echo "Stop the the Telegram bot"
 
